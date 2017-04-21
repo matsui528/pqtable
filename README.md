@@ -18,9 +18,11 @@ Requisites:
 
 * C++11
 
+* CMake
+
 * OpenCV 3.X
 
-* (optional, but strongly recommended) [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html). On ubuntu, you can install TCMalloc by `sudo apt-get install google-perftools`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x times faster.
+* (optional, but strongly recommended) [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html). On ubuntu, you can install TCMalloc by `sudo apt-get install libgoogle-perftools-dev`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x times faster.
 
 Build as usual with CMake:
 ```
