@@ -22,10 +22,12 @@ Requisites:
 
 * OpenCV 3.X
 
-* (optional, but strongly recommended) [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html). On ubuntu, you can install TCMalloc by `sudo apt-get install libgoogle-perftools-dev`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x times faster.
+* [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) (optional, but strongly recommended). On ubuntu, you can install TCMalloc by `sudo apt-get install libgoogle-perftools-dev`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x faster.
 
 Build as usual with CMake:
 ```
+$ git clone https://github.com/matsui528/pqtable.git
+$ cd pqtable
 $ mkdir build && cd build && cmake ..
 $ make 
 ```
@@ -64,7 +66,7 @@ Let's download the sift1b vectors on `data/`.
 ```
 $ bash scripts/download_sift1b.sh 
 ```
-This would take several hours. Since the data is large, ~200 GB disk space is required.
+This would take several hours. Since the data is large, ~250 GB disk space is required.
 Next, go to the bin dir, and run the code for training a product quantizer.
 ```
 $ cd build/bin
