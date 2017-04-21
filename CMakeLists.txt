@@ -15,6 +15,8 @@ if(OPENMP_FOUND)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
+find_library(TCMALLOC_LIB tcmalloc)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 file(GLOB EXAMPLES examples/*.cpp)
@@ -23,6 +25,8 @@ foreach(EXAMPLE ${EXAMPLES})
   get_filename_component(PREFIX ${EXAMPLE} NAME_WE)
   add_executable(${PREFIX} ${EXAMPLE} ${SOURCES})
   target_link_libraries(${PREFIX} ${OpenCV_LIBS})
-  target_link_libraries(${PREFIX} tcmalloc)
+  if(TCMALLOC_LIB)
+    target_link_libraries(${PREFIX} tcmalloc)
+  endif()
 endforeach(EXAMPLE)
 
