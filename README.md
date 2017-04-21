@@ -20,7 +20,7 @@ Requisites:
 
 * OpenCV 3.X
 
-* [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html). On ubuntu, you can install TCMalloc by `sudo apt-get install google-perftools`. Then link it via the "-ltcmalloc" linker flag.
+* (optional, but strongly recommended) [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html). On ubuntu, you can install TCMalloc by `sudo apt-get install google-perftools`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x times faster.
 
 Build as usual with CMake:
 ```
