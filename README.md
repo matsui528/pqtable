@@ -22,7 +22,7 @@ Requisites:
 
 * OpenCV 3.X
 
-* [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) (optional, but strongly recommended). On ubuntu, you can install TCMalloc by `sudo apt-get install libgoogle-perftools-dev`. Then link it via the "-ltcmalloc" linker flag. This makes the search 2x faster.
+* [TCMalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) (optional, but strongly recommended). On ubuntu, you can install TCMalloc by `sudo apt-get install libgoogle-perftools-dev`. Then link it via the "-ltcmalloc" linker flag. This makes the search ~2x faster.
 
 Build as usual with CMake:
 ```
@@ -35,7 +35,7 @@ $ make
 ## Testing
 ### Demo using the siftsmall dataset
 You can try a small demo using the siftsmall data. This does not take time.
-First, please download the siftsmall vectors on `data/`.
+First, `cd` to the top directory of this project, then download the siftsmall vectors on `data/`.
 ```
 $ bash scripts/download_siftsmall.sh 
 ```
@@ -62,7 +62,7 @@ Note that these results (the nearest_ids and the distances) might be slightly di
 
 ### Demo using the sift1b dataset
 You can try a large-scale demo using the sift1b data. This demo reproduces the results of Table 3 in the paper.
-Let's download the sift1b vectors on `data/`.
+Let's `cd` to the top directory of this project, and download the sift1b vectors on `data/`.
 ```
 $ bash scripts/download_sift1b.sh 
 ```
