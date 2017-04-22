@@ -8,22 +8,37 @@
 #include <opencv2/opencv.hpp>
 #include <fstream> // for IO
 
-
 namespace pqtable {
-
 
 // Data structure to handle a billion-scale data
 // UcharVecs is something like vec<vec<uchar>>.
 // When constructing (or Resize(), or Read()), this class malloc a long array (vec<uchar>),
 // so this class achievs almost ideal memory consumption.
+// In PQ, UcharVecs is used as follows:
+//     vector<vector<float>> vecs;
+//     PQ pq = /* setup a product quantizer */
+//     UcharVecs code(N, M);   // N: #vectors. M: #subspace
+//     for(int n = 0; n < N; ++n){
+//       UcharVecs[n].SetVec(n, pq.Encode(vecs[n]));
+//     }
+// Or, the direct interfacface is also provided.
+//     UcharVecs code = pq.Encode(vecs)
+// Or, you can convert from vec<vec<uchar>>
+//     vector<vector<uchar>> some_codes = /* set codes */
+//     UcharVecs code(some_codes)
+// IO interfaces are:
+//     UcharVecs::Read("code.bin", code);  // write
+//     UcharVecs code_read = UcharVecs::Write("code.bin"); // read
+// The size of "code.bin" is the ideal size + 8 bytes (we record N and D),
+// e.g., if N=10^9 and D=4, then code.bin will be 4,000,000,008 bytes.
 
 class UcharVecs{
 public:
-    UcharVecs() : m_N(0), m_D(0) {}
-    UcharVecs(int N, int D) { Resize(N, D); }
-    UcharVecs(const std::vector<std::vector<uchar> > &vec);
+    UcharVecs() : m_N(0), m_D(0) {}   // Space is not allocated
+    UcharVecs(int N, int D) { Resize(N, D); }  // Space is allocated
+    UcharVecs(const std::vector<std::vector<uchar> > &vec);  // vec<vec<uchar>> -> UcharVecs
 
-    void Resize(int N, int D); // old values are remained
+    void Resize(int N, int D); // After resized, the old values are remained
 
     // Getter
     const uchar &GetVal(int n, int d) const;     // n-th vec, d-th dim
@@ -78,8 +93,6 @@ private:
 //   std::vector<PQ::Table> codewords = some_func();
 //   PQ pq(codewords);
 //   /* then you can use pq */
-
-
 
 class PQ
 {

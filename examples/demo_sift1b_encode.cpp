@@ -1,4 +1,3 @@
-#include <opencv2/opencv.hpp>
 #include "pq_table.h"
 #include "utils.h"
 
@@ -30,7 +29,6 @@ int main(){
     std::vector<std::vector<float> > buff;  // Buffer
     int buff_max_size = 10000000;
 
-    double t0 = pqtable::Elapsed();
     std::cout << "Start encoding" << std::endl;
     while(!reader.IsEnd()){
         buff.push_back(reader.Next());  // Read a line (a vector)
@@ -45,7 +43,7 @@ int main(){
         std::vector<std::vector<uchar> > buff_encoded = EncodeParallel(pq, buff); // Encode
         codes.insert(codes.end(), buff_encoded.begin(), buff_encoded.end()); // Push back
     }
-    std::cout << pqtable::Elapsed() - t0 << " [sec]" << std::endl;
+
 
     // (5) Convert to UcharVecs, then write it
     pqtable::UcharVecs::Write("codes.bin", pqtable::UcharVecs(codes));

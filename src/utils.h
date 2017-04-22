@@ -19,7 +19,8 @@ namespace pqtable {
 //   }
 //
 // Optional wrapper interface:
-//   std::vector<std::vector<float> > vecs = ReadAll("data.fvecs", "fvecs");
+//   int top_n = 100;
+//   std::vector<std::vector<float> > vecs = ReadTopN("data.fvecs", "fvecs", top_n);
 
 // Interface (abstract basic class) of iterative reader
 class I_ItrReader{

@@ -5,7 +5,8 @@
 // PQKeyGenerator compute candidates of PQ codes (PQKey), by which
 // the hash-table is fetched.
 //
-// Alg. 3 in Y. Matsui et al., "PQTable: Non-exhaustive Fast Search for
+// This class is explained in Alg. 3 in Y. Matsui et al.,
+// "PQTable: Non-exhaustive Fast Search for
 // Product-quantized Codes using Hash Tables", arXiv 2017
 
 #include <opencv2/opencv.hpp>

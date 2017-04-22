@@ -1,4 +1,3 @@
-#include <opencv2/opencv.hpp>
 #include "pq_table.h"
 #include "utils.h"
 

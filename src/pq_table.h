@@ -16,19 +16,19 @@
 //   pqtable::UcharVecs codes = pq.Encode(base_vecs);     // Encode vectors
 //
 //   /* PQTable is instantiated with the codewords and the PQ-codes. */
-//   /* The selection of single/multi table, and the computation of */
-//   /* the best "T" are done automatically. */
+//   /* The best "T" is selected automaticallly. If T=1, the sinle-PQTable is
+//   /* created. Otherwise, multi-PQTable is created.
 //   pqtable::PQTable tbl(pq.GetCodewords(), codes);
 //
 //   /* Neareset neighbor search for 0-th query vector. */
-//   /* ret.first is the nearest-id. ret.second is the distance between */
+//   /* score.first is the nearest-id. score.second is the distance between */
 //   /* the 0-th query and the nearest-id-th base vec. */
-//   pair<int, float> ret = tbl.Query(query_vecs[0]);
+//   pair<int, float> score = tbl.Query(query_vecs[0]);
 //
 //   /* Or, you can do top-k search */
-//   /* rets[0] is the nearest result, and rets[1] is the second nearest result. */
+//   /* scores[0] is the nearest result, and scores[1] is the second nearest result. */
 //   int top_k = 3;
-//   vector<pair<int, float>> rets = tbl.Query(query_vecs[0], top_k);
+//   vector<pair<int, float>> scores = tbl.Query(query_vecs[0], top_k);
 
 #include <opencv2/opencv.hpp>
 #include <unordered_map>
