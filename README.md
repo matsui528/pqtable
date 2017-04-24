@@ -5,9 +5,9 @@
 
 References:
 
-- Project page: [https://www.hal.t.u-tokyo.ac.jp/~matsui/project/pqtable/pqtable.html](https://www.hal.t.u-tokyo.ac.jp/~matsui/project/pqtable/pqtable.html)
+- Project page: [http://yusukematsui.me/project/pqtable/pqtable.html](http://yusukematsui.me/project/pqtable/pqtable.html)
 
-- Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Non-exhaustive Fast Search for Product-quantized Codes using Hash Tables**", arXiv 2017. [[paper](XXX)] (extended version of ICCV paper)
+- Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Non-exhaustive Fast Search for Product-quantized Codes using Hash Tables**", arXiv 2017. [[paper](https://arxiv.org/abs/1704.06556)] (extended version of ICCV paper)
 
 - Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Fast Exact Asymmetric Distance Neighbor Search for Product Quantization using Hash Tables**", ICCV 2015. [[paper](https://www.hal.t.u-tokyo.ac.jp/~matsui/project/pqtable/doc/iccv2015.pdf)][[supplementary](https://www.hal.t.u-tokyo.ac.jp/~matsui/project/pqtable/doc/supplementary.pdf)]
 
@@ -113,5 +113,3 @@ Then you will see Recall@1, 2, 5, ..., 100.
 
 
 
-
- 
