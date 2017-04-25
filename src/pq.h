@@ -13,9 +13,9 @@ namespace pqtable {
 // Data structure to handle a billion-scale data
 // UcharVecs is something like vec<vec<uchar>>.
 // When constructing (or Resize(), or Read()), this class malloc a long array (vec<uchar>),
-// so this class achievs almost ideal memory consumption.
+// so this class achieves almost ideal memory consumption.
 // In PQ, UcharVecs is used as follows:
-//     vector<vector<float>> vecs;
+//     vector<vector<float>> vecs = /* set data */ ;
 //     PQ pq = /* setup a product quantizer */
 //     UcharVecs code(N, M);   // N: #vectors. M: #subspace
 //     for(int n = 0; n < N; ++n){
@@ -27,14 +27,14 @@ namespace pqtable {
 //     vector<vector<uchar>> some_codes = /* set codes */
 //     UcharVecs code(some_codes)
 // IO interfaces are:
-//     UcharVecs::Read("code.bin", code);  // write
-//     UcharVecs code_read = UcharVecs::Write("code.bin"); // read
+//     UcharVecs::Write("code.bin", code);  // write
+//     UcharVecs code_read = UcharVecs::Read("code.bin"); // read
 // The size of "code.bin" is the ideal size + 8 bytes (we record N and D),
 // e.g., if N=10^9 and D=4, then code.bin will be 4,000,000,008 bytes.
 
 class UcharVecs{
 public:
-    UcharVecs() : m_N(0), m_D(0) {}   // Space is not allocated
+    UcharVecs() : m_N(0), m_D(0) {}   // Space is not allocated. You need to call Resize first
     UcharVecs(int N, int D) { Resize(N, D); }  // Space is allocated
     UcharVecs(const std::vector<std::vector<uchar> > &vec);  // vec<vec<uchar>> -> UcharVecs
 
@@ -90,14 +90,14 @@ private:
 //   /* then you can use pq */
 //
 // (3) Create codewords using different ways
-//   std::vector<PQ::Table> codewords = some_func();
+//   std::vector<PQ::Array> codewords = some_func();
 //   PQ pq(codewords);
 //   /* then you can use pq */
 
 class PQ
 {
 public:
-    // for convinience, rename vec<vec<float>> as Table
+    // for convinience, rename vec<vec<float>> as Array
     typedef std::vector<std::vector<float> > Array;
 
     // codewords[m][ks][ds] : m-th subspace, ks-th codeword, ds-th element
@@ -139,10 +139,10 @@ public:
     static std::vector<Array> ReadCodewords(std::string file_path);
 
 
-    // Utility functions. Table <-> cv::Mat
-    // table[n][i] <-> mat.at<float>(n, i)
-    static cv::Mat TableToMat(const Array &table);
-    static Array MatToTable(const cv::Mat &mat);
+    // Utility functions. Array <-> cv::Mat
+    // array[n][i] <-> mat.at<float>(n, i)
+    static cv::Mat ArrayToMat(const Array &array);
+    static Array MatToArray(const cv::Mat &mat);
 
 private:
     //int m_D;   // e.g., m_D = 128 (SIFT)

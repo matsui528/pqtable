@@ -114,7 +114,7 @@ private:
 
 
 
-// Proxy class. This class automatically select the best table from singletable of multitable
+// Proxy class. This class can automatically select the best table from singletable of multitable
 class PQTable{
 public:
     PQTable(const std::vector<PQ::Array> &codewords,

@@ -1,6 +1,6 @@
-// Yusuke Matsui
-// This code is provided by Norouzi.
-// I re-use these types as basic structre for this project.
+// The codes in this direcoty are from https://github.com/norouzi/mih:
+// "Fast Exact Search in Hamming Space with Multi-Index Hashing,
+// M. Norouzi, A. Punjani, D. J. Fleet, IEEE TPAMI 2014"
 
 
 #include <inttypes.h>

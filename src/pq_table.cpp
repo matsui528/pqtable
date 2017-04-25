@@ -308,7 +308,7 @@ void PQMultiTable::DivideCodewords(const std::vector<PQ::Array> &codewords, int 
 
 PQTable::PQTable(const std::vector<PQ::Array> &codewords, const UcharVecs &pq_codes, int T)
 {
-    // If t == -1, then the best T is automatically selected
+    // If T == -1, then the best T is automatically selected
     if(T == -1){
         T = PQMultiTable::OptimalT( (int) codewords.size() * 8, pq_codes.Size());
     }

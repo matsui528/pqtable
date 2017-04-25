@@ -2,8 +2,7 @@
 #define PQTABLE_PQ_KEY_GENERATOR_H
 
 // Given an original vector and codewords,
-// PQKeyGenerator compute candidates of PQ codes (PQKey), by which
-// the hash-table is fetched.
+// PQKeyGenerator compute candidates of PQ codes (PQKey).
 //
 // This class is explained in Alg. 3 in Y. Matsui et al.,
 // "PQTable: Non-exhaustive Fast Search for

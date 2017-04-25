@@ -111,7 +111,7 @@ PQ::PQ(const std::vector<PQ::Array> &codewords){
 }
 
 std::vector<PQ::Array> PQ::Learn(const std::vector<std::vector<float> > &vecs, int M, int Ks){
-    cv::Mat vecs_cvmat = TableToMat(vecs); // Convert to cv::Mat
+    cv::Mat vecs_cvmat = ArrayToMat(vecs); // Convert to cv::Mat
     return Learn(vecs_cvmat, M, Ks);
 }
 
@@ -140,7 +140,7 @@ std::vector<PQ::Array> PQ::Learn(const cv::Mat &vecs_cvmat, int M, int Ks)
                    3, cv::KMEANS_PP_CENTERS, center);
 
         // Record
-        codewords[m] = MatToTable(center);
+        codewords[m] = MatToArray(center);
     }
     return codewords;
 }
@@ -338,31 +338,31 @@ std::vector<PQ::Array> PQ::ReadCodewords(std::string file_path)
     return codewords;
 }
 
-cv::Mat PQ::TableToMat(const PQ::Array &table)
+cv::Mat PQ::ArrayToMat(const PQ::Array &array)
 {
-    assert( (int) table.size() > 0);
-    assert( (int) table[0].size() > 0);
-    cv::Mat mat( (int) table.size(), (int) table[0].size(), CV_32FC1);
-    for(int n = 0; n < (int) table.size(); ++n){
-        for(int i = 0; i < (int) table[0].size(); ++i){
-            mat.at<float>(n, i) = table[n][i];
+    assert( (int) array.size() > 0);
+    assert( (int) array[0].size() > 0);
+    cv::Mat mat( (int) array.size(), (int) array[0].size(), CV_32FC1);
+    for(int n = 0; n < (int) array.size(); ++n){
+        for(int i = 0; i < (int) array[0].size(); ++i){
+            mat.at<float>(n, i) = array[n][i];
         }
     }
     return mat;
 }
 
-PQ::Array PQ::MatToTable(const cv::Mat &mat)
+PQ::Array PQ::MatToArray(const cv::Mat &mat)
 {
     assert(mat.type() == CV_32FC1);
     assert(mat.cols > 0);
     assert(mat.rows > 0);
-    Array table(mat.rows, std::vector<float>(mat.cols));
+    Array array(mat.rows, std::vector<float>(mat.cols));
     for(int n = 0; n < mat.rows; ++n){
         for(int i = 0; i < mat.cols; ++i){
-            table[n][i] = mat.at<float>(n, i);
+            array[n][i] = mat.at<float>(n, i);
         }
     }
-    return table;
+    return array;
 }
 
 

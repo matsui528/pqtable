@@ -11,7 +11,7 @@ std::vector<std::vector<uchar> > EncodeParallel(const pqtable::PQ &pq, const std
     return codes;
 }
 
-// Assign "added" to base[start_id] to base[start_id + added.Size()]
+// Assign "added" to "base[start_id] - base[start_id + added.Size()"]
 void Assign(pqtable::UcharVecs &base, int start_id, const pqtable::UcharVecs &added){
     assert(start_id + added.Size() <= base.Size());
     for(int i = 0; i < added.Size(); ++i){
@@ -37,7 +37,8 @@ int main(){
     //         vector<vector<float>> bases = pqtable::ReadTopN("../../data/bigann_base.bvecs", "bvecs");
     //         pqtable::UcharVecs codes = pq.Encode(bases);
     //     However, this naive encoding is slow and memory-inefficient.
-    //     So we repeat the following two steps: (1) storing N / 100 vectors in a buffer, (2) encoding the buffer in parallel.
+    //     So we repeat the following three steps: (1) reading N / 100 vectors in a buffer,
+    //     (2) encoding the buffer in parallel, and (3) refresh the buffer.
     //     Since the buffer is refreshed everytime, the memory consumption is just the buffer.
 
     pqtable::ItrReader reader("../../data/bigann_base.bvecs", "bvecs");
@@ -47,11 +48,11 @@ int main(){
 
     std::cout << "Start encoding" << std::endl;
     while(!reader.IsEnd()){
-        buff.push_back(reader.Next());  // Read a line (a vector)
-        if( (int) buff.size() == buff_max_size){  // If buff_max_size vectors are read, encode them.
-            Assign(codes, id_encoded, EncodeParallel(pq, buff)); // Encode buff, and assign to codes
+        buff.push_back(reader.Next());  // Read a line (a vector) into the buffer
+        if( (int) buff.size() == buff_max_size){  // (1) If buff_max_size vectors are read,
+            Assign(codes, id_encoded, EncodeParallel(pq, buff)); // (2) Encode the buffer, and assign to the codes
             id_encoded += (int) buff.size();  // update id
-            buff.clear(); // refresh
+            buff.clear(); // (3) refresh
             std::cout << id_encoded << " / " << N << " vectors are encoded in total" << std::endl;
         }
     }
