@@ -237,7 +237,7 @@ std::vector<std::pair<int, float> > PQMultiTable::Query(const std::vector<float>
             uint *result = m_sHashTableEach[t].query(pqkey.key, &sz);
             if(result != NULL){ // found!
                 for(int i = 0; i < sz; ++i){
-                    uint id = (int) result[i];
+                    uint id = result[i];
                     int c = ++count[id];
 
                     if(c == 1){ // if this is the first insert
