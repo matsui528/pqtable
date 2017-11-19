@@ -4,7 +4,7 @@
 
 // PQTable
 // Y. Matsui, T. Yamasaki, and K. Aizawa, "PQTable: Non-exhaustive Fast Search for
-// Product-quantized Codes using Hash Tables", arXiv 2017
+// Product-quantized Codes using Hash Tables", IEEE TMM 2018
 //
 // Usage:
 //   vector<vector<float>> train_vecs = /* set vec */
@@ -114,7 +114,7 @@ private:
 
 
 
-// Proxy class. This class can automatically select the best table from singletable of multitable
+// Proxy class. This class can automatically select the best table either from singletable or multitable
 class PQTable{
 public:
     PQTable(const std::vector<PQ::Array> &codewords,

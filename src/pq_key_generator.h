@@ -6,7 +6,7 @@
 //
 // This class is explained in Alg. 3 in Y. Matsui et al.,
 // "PQTable: Non-exhaustive Fast Search for
-// Product-quantized Codes using Hash Tables", arXiv 2017
+// Product-quantized Codes using Hash Tables", IEEE TMM 2018
 
 #include <opencv2/opencv.hpp>
 #include "pq.h"

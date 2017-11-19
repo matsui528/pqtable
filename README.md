@@ -7,7 +7,7 @@ References:
 
 - Project page: [http://yusukematsui.me/project/pqtable/pqtable.html](http://yusukematsui.me/project/pqtable/pqtable.html)
 
-- Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Non-exhaustive Fast Search for Product-quantized Codes using Hash Tables**", arXiv 2017. [[paper](https://arxiv.org/abs/1704.06556)] (extended version of ICCV paper)
+- Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Non-exhaustive Fast Search for Product-quantized Codes using Hash Tables**", IEEE Transactions on Multimedia 2018. [[paper](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8110654)] (extended version of ICCV paper)
 
 - Y. Matsui, T. Yamasaki, and K. Aizawa, "**PQTable: Fast Exact Asymmetric Distance Neighbor Search for Product Quantization using Hash Tables**", ICCV 2015. [[paper](http://yusukematsui.me/project/pqtable/doc/iccv2015.pdf)][[supplementary](http://yusukematsui.me/project/pqtable/doc/supplementary.pdf)]
 
